@@ -63,8 +63,8 @@
 
         /* ============== SECTIONS ============== */
         section { padding:80px 20px; max-width:1000px; margin:0 auto; text-align:center; }
-        .vision h2, .services h2, .contact h2, .about h2, .apps h2, .vision-map h2 { font-family:'Cinzel Decorative', cursive; font-size:2.2rem; color:#FFD369; margin-bottom:20px; }
-        .vision p, .about p, .vision-map p { font-size:1.1rem; color:#B0B0B0; line-height:1.6; max-width:800px; margin:0 auto 30px; }
+        .vision h2, .services h2, .contact h2, .about h2, .apps h2 { font-family:'Cinzel Decorative', cursive; font-size:2.2rem; color:#FFD369; margin-bottom:20px; }
+        .vision p, .about p { font-size:1.1rem; color:#B0B0B0; line-height:1.6; max-width:800px; margin:0 auto 30px; }
 
         /* ============== SERVICES ============== */
         .service-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:30px; margin-top:40px; }
@@ -78,8 +78,9 @@
         .app-card { background-color:#111111; border-radius:14px; padding:20px; border:1px solid rgba(255,211,105,0.2); box-shadow:0 0 10px rgba(255,211,105,0.1); text-align:left; }
         .app-card h3 { color:#FFD369; margin:0 0 8px; font-size:1.15rem; }
         .app-card p { color:#B0B0B0; margin:0 0 12px; font-size:0.95rem; }
-        .app-card .btn { display:inline-block; background:#FFAD45; color:#0A0A0A; text-decoration:none; padding:10px 14px; border-radius:10px; font-weight:600; }
+        .app-card .btn { display:inline-block; background:#FFAD45; color:#0A0A0A; text-decoration:none; padding:10px 14px; border-radius:10px; font-weight:600; border:none; cursor:pointer; }
         .app-card .btn:hover { background:#FFD369; box-shadow:0 0 10px #FFD36944; }
+        .app-card .btn[disabled], .app-card .btn:disabled { background: rgba(255, 211, 105, 0.25); color: #0A0A0A; cursor: not-allowed; box-shadow: none; }
 
         /* ============== CONTACT ============== */
         .contact form { display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto; }
@@ -161,17 +162,17 @@
                 <div class="app-card" id="wwjd">
                     <h3>WWJD</h3>
                     <p>A simple, reflective AI companion for daily spiritual growth.</p>
-                    <a class="btn" href="apps.html#wwjd" aria-label="View WWJD">View</a>
+                    <a class="btn wwjd-link" href="https://play.google.com/store/apps/details?id=com.yourcompany.wwjd&amp;utm_source=na_Med" target="_blank" rel="noopener" aria-label="Open WWJD on Google Play">Open in Play Store</a>
                 </div>
                 <div class="app-card" id="habit-tracker">
                     <h3>Habit Tracker</h3>
                     <p>Track habits, measure progress, and build better routines.</p>
-                    <a class="btn" href="apps.html#habit-tracker" aria-label="View Habit Tracker">View</a>
+                    <button class="btn" type="button" disabled aria-label="Habit Tracker comming soon">comming soon</button>
                 </div>
                 <div class="app-card" id="onevine">
                     <h3>OneVine</h3>
                     <p>Community-powered learning, challenges, and cultural exploration.</p>
-                    <a class="btn" href="apps.html#onevine" aria-label="View OneVine">View</a>
+                    <button class="btn" type="button" disabled aria-label="OneVine comming soon">comming soon</button>
                 </div>
             </div>
         </section>
@@ -208,18 +209,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- VISION MAP -->
-        <section class="vision-map" data-aos="fade-up">
-            <h2>Vision Map</h2>
-            <p>
-                2024: The Spark<br>
-                2025: The Portal Opens<br>
-                2026: Voice, Form, and Flow<br>
-                2027: Self-Sustaining Thought<br>
-                2030: Shared Conscious Interface
-            </p>
-        </section>
     </main>
 
     <!-- ========== FOOTER ========== -->
@@ -238,6 +227,29 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
+
+        // WWJD Play Store deep link handling
+        const wwjdLinks = document.querySelectorAll('.wwjd-link');
+        const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.yourcompany.wwjd&utm_source=na_Med';
+        const androidIntentUrl = 'market://details?id=com.yourcompany.wwjd';
+        const isAndroid = /Android/i.test(navigator.userAgent);
+
+        wwjdLinks.forEach(link => {
+            if (isAndroid) {
+                link.setAttribute('href', androidIntentUrl);
+                link.removeAttribute('target');
+                link.removeAttribute('rel');
+                link.addEventListener('click', () => {
+                    setTimeout(() => {
+                        window.location.href = playStoreUrl;
+                    }, 600);
+                }, { once: true });
+            } else {
+                link.setAttribute('href', playStoreUrl);
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener');
+            }
+        });
 
         // Magical trailing orbs
         document.addEventListener('mousemove', function (e) {

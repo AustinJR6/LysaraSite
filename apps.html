@@ -28,8 +28,9 @@
     .app-card{background:#111;border:1px solid rgba(255,211,105,.2);border-radius:14px;padding:20px;box-shadow:0 0 10px rgba(255,211,105,.1)}
     .app-card h2{color:#FFD369;margin:0 0 6px;font-size:1.3rem}
     .app-card p{color:#B0B0B0;margin:0 0 12px}
-    .btn{display:inline-block;background:#FFAD45;color:#0A0A0A;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:600}
+    .btn{display:inline-block;background:#FFAD45;color:#0A0A0A;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:600;border:none;cursor:pointer}
     .btn:hover{background:#FFD369;box-shadow:0 0 10px #FFD36944}
+    .btn[disabled],.btn:disabled{background:rgba(255,211,105,.25);color:#0A0A0A;cursor:not-allowed;box-shadow:none}
     footer{background:#0A0A0A;border-top:1px solid rgba(255,211,105,.1);padding:24px 20px;color:#B0B0B0}
     .footer-wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .footer-links a{color:#FFD369;text-decoration:none;margin-left:14px}
@@ -64,19 +65,19 @@
       <section id="wwjd" class="app-card" aria-labelledby="wwjd-title">
         <h2 id="wwjd-title">WWJD</h2>
         <p>A simple, reflective AI companion for daily spiritual growth.</p>
-        <a class="btn" href="#wwjd" aria-label="WWJD details">View</a>
+        <a class="btn wwjd-link" href="https://play.google.com/store/apps/details?id=com.yourcompany.wwjd&amp;utm_source=na_Med" target="_blank" rel="noopener" aria-label="Open WWJD on Google Play">Open in Play Store</a>
       </section>
 
       <section id="habit-tracker" class="app-card" aria-labelledby="habit-title">
         <h2 id="habit-title">Habit Tracker</h2>
         <p>Track habits, measure progress, and build better routines.</p>
-        <a class="btn" href="#habit-tracker" aria-label="Habit Tracker details">View</a>
+        <button class="btn" type="button" disabled aria-label="Habit Tracker comming soon">comming soon</button>
       </section>
 
       <section id="onevine" class="app-card" aria-labelledby="onevine-title">
         <h2 id="onevine-title">OneVine</h2>
         <p>Community-powered learning, challenges, and cultural exploration.</p>
-        <a class="btn" href="#onevine" aria-label="OneVine details">View</a>
+        <button class="btn" type="button" disabled aria-label="OneVine comming soon">comming soon</button>
       </section>
     </div>
   </main>
@@ -91,6 +92,27 @@
       </div>
     </div>
   </footer>
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script>const yearEl=document.getElementById('year');
+  if(yearEl){yearEl.textContent=new Date().getFullYear();}
+
+  const wwjdLinks=document.querySelectorAll('.wwjd-link');
+  const playStoreUrl='https://play.google.com/store/apps/details?id=com.yourcompany.wwjd&utm_source=na_Med';
+  const androidIntentUrl='market://details?id=com.yourcompany.wwjd';
+  const isAndroid=/Android/i.test(navigator.userAgent);
+
+  wwjdLinks.forEach(link=>{
+    if(isAndroid){
+      link.setAttribute('href',androidIntentUrl);
+      link.removeAttribute('target');
+      link.removeAttribute('rel');
+      link.addEventListener('click',()=>{
+        setTimeout(()=>{window.location.href=playStoreUrl;},600);
+      },{once:true});
+    }else{
+      link.setAttribute('href',playStoreUrl);
+      link.setAttribute('target','_blank');
+      link.setAttribute('rel','noopener');
+    }
+  });</script>
 </body>
 </html>
