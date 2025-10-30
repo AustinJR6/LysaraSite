@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OneVine — Community-powered spiritual growth, challenges, and cultural exploration by Lysara LLC">
+  <title>OneVine — Lysara</title>
+  <meta property="og:title" content="OneVine by Lysara">
+  <meta property="og:description" content="Community-powered learning, challenges, and cultural exploration">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/lysara-logo1.png">
+  <link rel="canonical" href="/onevine.html">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:'Inter',sans-serif;background:#0A0A0A;color:#F5F5F5;overflow-x:hidden}
+    :focus-visible{outline:3px solid #FFD369;outline-offset:3px}
+
+    .magic-background{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-99;background:radial-gradient(circle at center,rgba(255,255,255,.02),transparent 60%),radial-gradient(circle at 40% 30%,rgba(255,211,105,.05),transparent 80%),#0A0A0A;pointer-events:none;animation:shimmer 60s infinite linear}
+    @keyframes shimmer{0%{background-position:0% 0%}100%{background-position:200% 200%}}
+
+    nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.85);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,211,105,.1)}
+    .nav-wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+    .brand{display:flex;align-items:center;gap:10px;color:#FFD369;text-decoration:none;font-weight:600}
+    .brand img{width:28px;height:28px;filter:drop-shadow(0 0 6px #FFD369aa)}
+    .nav-links a{color:#F5F5F5;text-decoration:none;margin:0 10px;padding:8px 10px;border-radius:8px}
+    .nav-links a:hover{background:rgba(255,211,105,.08);color:#FFD369}
+
+    header{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;background:radial-gradient(circle at center,rgba(255,211,105,.12),#0A0A0A);text-align:center;padding:60px 20px 40px}
+    header img{width:120px;margin-bottom:24px;filter:drop-shadow(0 0 15px #FFD369)}
+    header h1{font-family:'Cinzel Decorative',cursive;color:#FFD369;font-size:2.5rem;margin:0 0 12px}
+    header p{color:#B0B0B0;font-size:1.15rem;max-width:600px;margin:0 0 32px}
+
+    .cta-button{background:#FFAD45;color:#0A0A0A;border:none;padding:16px 32px;font-size:1.05rem;font-weight:600;border-radius:30px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s ease}
+    .cta-button:hover{background:#FFD369;box-shadow:0 0 10px #FFD369,0 0 40px #FFD36944;transform:translateY(-2px)}
+
+    main{max-width:900px;margin:0 auto;padding:60px 20px}
+
+    .info-section{margin-bottom:48px}
+    .info-section h2{font-family:'Cinzel Decorative',cursive;color:#FFD369;font-size:1.8rem;margin:0 0 16px}
+    .info-section p{color:#B0B0B0;line-height:1.7;margin:0 0 12px}
+
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin:40px 0}
+    .feature-card{background:#111;border:1px solid rgba(255,211,105,.2);border-radius:14px;padding:24px;box-shadow:0 0 10px rgba(255,211,105,.1);transition:transform .3s ease,box-shadow .3s ease}
+    .feature-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(255,211,105,.3)}
+    .feature-card h3{color:#FFD369;margin:0 0 10px;font-size:1.2rem}
+    .feature-card p{color:#B0B0B0;margin:0;font-size:.95rem}
+
+    .links-section{background:#111;border:1px solid rgba(255,211,105,.2);border-radius:14px;padding:32px;margin:40px 0;text-align:center}
+    .links-section h2{font-family:'Cinzel Decorative',cursive;color:#FFD369;font-size:1.6rem;margin:0 0 24px}
+    .links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px}
+    .link-card{background:rgba(255,211,105,.05);border:1px solid rgba(255,211,105,.2);border-radius:10px;padding:20px;text-align:center;transition:all .3s ease}
+    .link-card:hover{background:rgba(255,211,105,.1);border-color:#FFD369}
+    .link-card a{color:#FFD369;text-decoration:none;font-weight:600;display:block}
+    .link-card p{color:#B0B0B0;font-size:.9rem;margin:8px 0 0}
+
+    footer{background:#0A0A0A;border-top:1px solid rgba(255,211,105,.1);padding:24px 20px;color:#B0B0B0}
+    .footer-wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .footer-links a{color:#FFD369;text-decoration:none;margin-left:14px}
+    .footer-links a:hover{text-decoration:underline}
+
+    @media screen and (max-width:768px){
+      header h1{font-size:2rem}
+      header p{font-size:1rem}
+      .features-grid{grid-template-columns:1fr}
+      .links-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="magic-background"></div>
+
+  <nav aria-label="Primary">
+    <div class="nav-wrap">
+      <a class="brand" href="/">
+        <img src="assets/lysara-logo1.png" alt="Lysara logo">
+        <span>Lysara</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#about">About</a>
+        <a href="/#vision">Vision</a>
+        <a href="/#services">Services</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <img src="assets/lysara-logo1.png" alt="OneVine logo">
+    <h1>OneVine</h1>
+    <p>Community-powered spiritual growth, daily challenges, and cultural exploration.</p>
+    <a class="cta-button onevine-link" href="https://play.google.com/store/apps/details?id=com.yourcompany.onevine" target="_blank" rel="noopener" aria-label="Download OneVine on Google Play">
+      Download on Google Play
+    </a>
+  </header>
+
+  <main>
+    <div class="info-section">
+      <h2>About OneVine</h2>
+      <p>OneVine is a spiritual growth and community engagement application that helps you deepen your faith, build meaningful connections, and explore diverse belief systems through daily challenges, AI-powered guidance, and collaborative learning.</p>
+      <p>Whether you're seeking personal reflection, community support, or cultural understanding, OneVine provides tools for your spiritual journey.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Daily Challenges</h3>
+        <p>Engage with thoughtful spiritual challenges tailored to your beliefs and region.</p>
+      </div>
+      <div class="feature-card">
+        <h3>AI Spiritual Guide</h3>
+        <p>Chat with AI-powered guidance for reflections, questions, and spiritual exploration.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Personal Journal</h3>
+        <p>Keep a private journal to document your spiritual journey and insights.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Community & Organizations</h3>
+        <p>Join organizations, collaborate on challenges, and grow together with your community.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Leaderboards</h3>
+        <p>Track your progress and see how your community ranks in spiritual engagement.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Multi-Faith Support</h3>
+        <p>Content tailored for Christianity, Islam, Judaism, Buddhism, Hinduism, and more.</p>
+      </div>
+    </div>
+
+    <div class="links-section">
+      <h2>Important Information</h2>
+      <p>Please review our legal policies and safety commitments:</p>
+
+      <div class="links-grid">
+        <div class="link-card">
+          <a href="/onevine-privacy.html">Privacy Policy</a>
+          <p>How we collect, use, and protect your data</p>
+        </div>
+        <div class="link-card">
+          <a href="/onevine-terms.html">Terms of Service</a>
+          <p>Agreement for using OneVine</p>
+        </div>
+        <div class="link-card">
+          <a href="/onevine-child-safety.html">Child Safety & Anti-Trafficking</a>
+          <p>Our commitment to protecting children and vulnerable persons</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section" style="text-align:center">
+      <h2>Get Started Today</h2>
+      <p>Download OneVine from Google Play and begin your spiritual journey.</p>
+      <a class="cta-button onevine-link" href="https://play.google.com/store/apps/details?id=com.yourcompany.onevine" target="_blank" rel="noopener" aria-label="Download OneVine on Google Play" style="margin-top:20px">
+        Download on Google Play
+      </a>
+    </div>
+
+    <div class="info-section" style="text-align:center;margin-top:60px">
+      <h2>Need Help?</h2>
+      <p>For questions, support, or feedback, contact us at <a href="mailto:info@lysaratech.com" style="color:#FFD369">info@lysaratech.com</a></p>
+    </div>
+  </main>
+
+  <footer aria-label="Footer">
+    <div class="footer-wrap">
+      <div>&copy; <span id="year"></span> Lysara LLC</div>
+      <div class="footer-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/onevine-child-safety.html">Child Safety</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Android deep link handling for Google Play
+    const onevineLinks = document.querySelectorAll('.onevine-link');
+    const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.yourcompany.onevine';
+    const androidIntentUrl = 'market://details?id=com.yourcompany.onevine';
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    onevineLinks.forEach(link => {
+      if (isAndroid) {
+        link.setAttribute('href', androidIntentUrl);
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+        link.addEventListener('click', () => {
+          setTimeout(() => {
+            window.location.href = playStoreUrl;
+          }, 600);
+        }, { once: true });
+      } else {
+        link.setAttribute('href', playStoreUrl);
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener');
+      }
+    });
+  </script>
+</body>
+</html>
