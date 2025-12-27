@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manifest — Intelligent Inventory Management for Distributed Teams by Lysara LLC">
+  <title>Manifest — Lysara</title>
+  <meta property="og:title" content="Manifest by Lysara">
+  <meta property="og:description" content="AI-powered inventory management for distributed teams and multi-location operations">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/lysara-logo1.png">
+  <link rel="canonical" href="/manifest.html">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:'Inter',sans-serif;background:#0A0A0A;color:#F5F5F5;overflow-x:hidden}
+    :focus-visible{outline:3px solid #FFD369;outline-offset:3px}
+
+    .magic-background{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-99;background:radial-gradient(circle at center,rgba(255,255,255,.02),transparent 60%),radial-gradient(circle at 40% 30%,rgba(255,211,105,.05),transparent 80%),#0A0A0A;pointer-events:none;animation:shimmer 60s infinite linear}
+    @keyframes shimmer{0%{background-position:0% 0%}100%{background-position:200% 200%}}
+
+    nav{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.85);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,211,105,.1)}
+    .nav-wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+    .brand{display:flex;align-items:center;gap:10px;color:#FFD369;text-decoration:none;font-weight:600}
+    .brand img{width:28px;height:28px;filter:drop-shadow(0 0 6px #FFD369aa)}
+    .nav-links a{color:#F5F5F5;text-decoration:none;margin:0 10px;padding:8px 10px;border-radius:8px}
+    .nav-links a:hover{background:rgba(255,211,105,.08);color:#FFD369}
+
+    header{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;background:radial-gradient(circle at center,rgba(255,211,105,.12),#0A0A0A);text-align:center;padding:60px 20px 40px}
+    header img{width:120px;margin-bottom:24px;filter:drop-shadow(0 0 15px #FFD369)}
+    header h1{font-family:'Cinzel Decorative',cursive;color:#FFD369;font-size:2.5rem;margin:0 0 12px}
+    header p{color:#B0B0B0;font-size:1.15rem;max-width:700px;margin:0 0 32px;line-height:1.5}
+
+    .cta-button{background:#FFAD45;color:#0A0A0A;border:none;padding:16px 32px;font-size:1.05rem;font-weight:600;border-radius:30px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s ease}
+    .cta-button:hover{background:#FFD369;box-shadow:0 0 10px #FFD369,0 0 40px #FFD36944;transform:translateY(-2px)}
+
+    main{max-width:1000px;margin:0 auto;padding:60px 20px}
+
+    .info-section{margin-bottom:48px}
+    .info-section h2{font-family:'Cinzel Decorative',cursive;color:#FFD369;font-size:1.8rem;margin:0 0 16px}
+    .info-section h3{color:#FFD369;font-size:1.4rem;margin:32px 0 12px}
+    .info-section p{color:#B0B0B0;line-height:1.7;margin:0 0 12px}
+    .info-section ul, .info-section ol{color:#B0B0B0;line-height:1.7;margin:0 0 12px}
+    .info-section li{margin-bottom:8px}
+    .info-section strong{color:#FFD369}
+
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin:40px 0}
+    .feature-card{background:#111;border:1px solid rgba(255,211,105,.2);border-radius:14px;padding:24px;box-shadow:0 0 10px rgba(255,211,105,.1);transition:transform .3s ease,box-shadow .3s ease}
+    .feature-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(255,211,105,.3)}
+    .feature-card h3{color:#FFD369;margin:0 0 10px;font-size:1.2rem}
+    .feature-card h4{color:#FFAD45;margin:12px 0 8px;font-size:1rem}
+    .feature-card p{color:#B0B0B0;margin:0;font-size:.95rem}
+    .feature-card ul{color:#B0B0B0;margin:8px 0;padding-left:20px;font-size:.95rem}
+
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin:40px 0}
+    .pricing-card{background:#111;border:1px solid rgba(255,211,105,.2);border-radius:14px;padding:28px;box-shadow:0 0 10px rgba(255,211,105,.1);text-align:center;transition:transform .3s ease,box-shadow .3s ease}
+    .pricing-card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(255,211,105,.3)}
+    .pricing-card h3{color:#FFD369;margin:0 0 8px;font-size:1.3rem}
+    .pricing-card .price{color:#FFAD45;font-size:1.8rem;font-weight:700;margin:12px 0}
+    .pricing-card p{color:#B0B0B0;margin:0 0 16px;font-size:.9rem}
+    .pricing-card ul{color:#B0B0B0;text-align:left;margin:16px 0;padding-left:20px;font-size:.9rem;list-style:none}
+    .pricing-card ul li{margin-bottom:8px;position:relative;padding-left:20px}
+    .pricing-card ul li:before{content:"✓";color:#FFD369;position:absolute;left:0;font-weight:700}
+
+    .benefits-section{background:#111;border:1px solid rgba(255,211,105,.2);border-radius:14px;padding:32px;margin:40px 0}
+    .benefits-section h3{color:#FFD369;font-size:1.3rem;margin:0 0 16px}
+    .benefits-section ul{color:#B0B0B0;line-height:1.7;margin:0;padding-left:20px}
+    .benefits-section li{margin-bottom:8px}
+
+    .cta-section{background:radial-gradient(circle at center,rgba(255,211,105,.1),#0A0A0A);border:1px solid rgba(255,211,105,.2);border-radius:14px;padding:40px;margin:40px 0;text-align:center}
+    .cta-section h2{font-family:'Cinzel Decorative',cursive;color:#FFD369;font-size:1.8rem;margin:0 0 16px}
+    .cta-section p{color:#B0B0B0;font-size:1.05rem;margin:0 0 24px}
+
+    footer{background:#0A0A0A;border-top:1px solid rgba(255,211,105,.1);padding:24px 20px;color:#B0B0B0}
+    .footer-wrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .footer-links a{color:#FFD369;text-decoration:none;margin-left:14px}
+    .footer-links a:hover{text-decoration:underline}
+
+    @media screen and (max-width:768px){
+      header h1{font-size:2rem}
+      header p{font-size:1rem}
+      .features-grid{grid-template-columns:1fr}
+      .pricing-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="magic-background"></div>
+
+  <nav aria-label="Primary">
+    <div class="nav-wrap">
+      <a class="brand" href="/">
+        <img src="assets/lysara-logo1.png" alt="Lysara logo">
+        <span>Lysara</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#about">About</a>
+        <a href="/#vision">Vision</a>
+        <a href="/#services">Services</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <img src="assets/lysara-logo1.png" alt="Manifest logo">
+    <h1>Manifest</h1>
+    <p>Intelligent Inventory Management for Distributed Teams. Transform your inventory operations with AI-powered intelligence.</p>
+    <a class="cta-button" href="/contact.html" aria-label="Contact us about Manifest">
+      Schedule Demo
+    </a>
+  </header>
+
+  <main>
+    <div class="info-section">
+      <h2>About Manifest</h2>
+      <p>Manifest Inventory Management eliminates coordination friction between field teams and warehouse operations through intelligent order generation, real-time tracking, and AI-assisted supply chain planning. Built for organizations managing multiple locations with distributed workforces.</p>
+    </div>
+
+    <div class="info-section">
+      <h2>Key Features</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>AI-Powered Ordering</h3>
+          <h4>Lana AI Assistant</h4>
+          <p>Simply tell the system what you need in plain English. AI automatically identifies items, calculates costs, and creates orders.</p>
+          <h4>AI BOM Builder</h4>
+          <p>Upload project blueprints (PDFs) and watch AI extract items, quantities, and specs.</p>
+          <h4>Voice Integration</h4>
+          <p>Hands-free operation for busy warehouse environments with smart component-based matching.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Multi-Location Control</h3>
+          <h4>Branch Management</h4>
+          <p>Manage 1 to unlimited warehouse locations with smart duplication to copy inventory setups instantly.</p>
+          <h4>Real-Time Visibility</h4>
+          <p>See stock levels across all locations at a glance with branch-specific reorder thresholds.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Complete Order Workflow</h3>
+          <ul>
+            <li>Easy field worker submission from mobile or desktop</li>
+            <li>Real-time status tracking</li>
+            <li>Prioritized warehouse queue management</li>
+            <li>Automated notifications</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>Smart Inventory Management</h3>
+          <ul>
+            <li>Three-level thresholds (Min/Par/Critical) with visual indicators</li>
+            <li>Auto-reorder alerts</li>
+            <li>QR code integration for fast scanning</li>
+            <li>Vehicle stock tracking with auto-replenishment</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>Supply Chain Mastery</h3>
+          <ul>
+            <li>Comprehensive distributor management</li>
+            <li>SKU mapping to distributor part numbers</li>
+            <li>Price tracking and monitoring</li>
+            <li>Automated purchase order generation</li>
+            <li>Receiving logs with discrepancy tracking</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>Part Request System</h3>
+          <p>When you need something not in standard inventory, field workers submit custom requests with urgency levels. Full history and status tracking eliminates lost requests.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h2>Benefits by Role</h2>
+
+      <div class="benefits-section">
+        <h3>For Operations Managers</h3>
+        <ul>
+          <li>Real-time inventory visibility across all locations</li>
+          <li>Performance metrics and KPI dashboards</li>
+          <li>Reduced paperwork through automation</li>
+          <li>Complete audit trail for compliance</li>
+          <li>Scalable multi-tenant architecture</li>
+        </ul>
+      </div>
+
+      <div class="benefits-section">
+        <h3>For Warehouse Staff</h3>
+        <ul>
+          <li>Clear prioritized order queue</li>
+          <li>AI assistance for complex decisions</li>
+          <li>Supplier pricing at your fingertips</li>
+          <li>Threshold alerts prevent stockouts</li>
+          <li>Part request tracking prevents backlogs</li>
+        </ul>
+      </div>
+
+      <div class="benefits-section">
+        <h3>For Field Workers</h3>
+        <ul>
+          <li>Order from anywhere on any device</li>
+          <li>Natural language AI ordering</li>
+          <li>Real-time status updates</li>
+          <li>Vehicle stock management simplified</li>
+          <li>Custom part requests fulfilled fast</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h2>Flexible Pricing Tiers</h2>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>CORE</h3>
+          <div class="price">Free Trial</div>
+          <p>Perfect for Getting Started</p>
+          <ul>
+            <li>1 branch location</li>
+            <li>5 users</li>
+            <li>Basic inventory tracking</li>
+            <li>Order management</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <h3>OPS</h3>
+          <div class="price">$99<span style="font-size:.9rem;color:#B0B0B0">/month</span></div>
+          <p>Full Operations</p>
+          <ul>
+            <li>5 branch locations</li>
+            <li>Unlimited users</li>
+            <li>Part request system</li>
+            <li>Vehicle stock management</li>
+            <li>Inventory thresholds</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <h3>OPS_SCAN</h3>
+          <div class="price">$199<span style="font-size:.9rem;color:#B0B0B0">/month</span></div>
+          <p>Enhanced Efficiency</p>
+          <ul>
+            <li>10 branch locations</li>
+            <li>QR code generation & scanning</li>
+            <li>AI Assistant (Lana)</li>
+            <li>Enhanced workflows</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <h3>OPS_SCAN_PO</h3>
+          <div class="price">$299<span style="font-size:.9rem;color:#B0B0B0">/month</span></div>
+          <p>Enterprise Complete</p>
+          <ul>
+            <li>Unlimited branches</li>
+            <li>AI BOM Builder</li>
+            <li>Purchase order automation</li>
+            <li>Supplier management</li>
+            <li>Receiving logs</li>
+            <li>Full enterprise features</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h2>Who Is This For?</h2>
+      <p>Ideal for organizations with:</p>
+      <ul>
+        <li>5+ field workers and centralized warehouse operations</li>
+        <li>Multiple branch locations requiring coordination</li>
+        <li>Complex inventory (electrical, construction, HVAC, plumbing)</li>
+        <li>Remote workforce coordination challenges</li>
+        <li>Need for real-time visibility and control</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>Enterprise-Grade Security</h2>
+      <ul>
+        <li><strong>Multi-Tenant Architecture:</strong> Complete data isolation between companies</li>
+        <li><strong>Role-Based Access Control:</strong> Admin, Warehouse, Field, and System roles</li>
+        <li><strong>Secure Authentication:</strong> Industry-standard encryption and session management</li>
+        <li><strong>Audit Trail:</strong> Every inventory change logged with timestamp and user</li>
+        <li><strong>Company-Scoped Queries:</strong> Automatic data protection at database level</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>What Makes Manifest Different</h2>
+
+      <h3>AI Integration Done Right</h3>
+      <p>Unlike basic inventory systems, Manifest uses advanced AI that understands context:</p>
+      <ul>
+        <li>Natural language processing for orders</li>
+        <li>PDF blueprint parsing and intelligent matching</li>
+        <li>Conversation memory across sessions</li>
+        <li>Safety confirmations before executing actions</li>
+      </ul>
+
+      <h3>Built for Distributed Teams</h3>
+      <p>Most inventory software assumes everyone's in one warehouse. Manifest understands modern operations:</p>
+      <ul>
+        <li>Field workers placing orders remotely</li>
+        <li>Multiple warehouse locations</li>
+        <li>Mobile-first responsive design</li>
+        <li>Real-time status synchronization</li>
+      </ul>
+
+      <h3>Supplier Intelligence</h3>
+      <p>Track more than just "what's in stock":</p>
+      <ul>
+        <li>Distributor pricing and lead times</li>
+        <li>Multiple suppliers per item with preferences</li>
+        <li>Automatic PO generation by supplier</li>
+        <li>Receiving discrepancy management</li>
+      </ul>
+
+      <h3>Scalable Growth Model</h3>
+      <p>Start with what you need, scale when you're ready:</p>
+      <ul>
+        <li>Tier-based licensing matches business size</li>
+        <li>Add branches without reconfiguration</li>
+        <li>Feature-gated access ensures fair pricing</li>
+        <li>No vendor lock-in with standard tech stack</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>Real Problems Solved</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Before Manifest</h3>
+          <ul style="list-style:none;padding:0">
+            <li>❌ Field workers calling warehouse for stock checks</li>
+            <li>❌ Lost or forgotten part requests</li>
+            <li>❌ Manual order entry from handwritten notes</li>
+            <li>❌ No visibility into order status</li>
+            <li>❌ Spreadsheet chaos across locations</li>
+            <li>❌ Stockouts discovered at worst times</li>
+            <li>❌ Manual supplier price lookups</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3>After Manifest</h3>
+          <ul style="list-style:none;padding:0">
+            <li>✅ Self-service ordering with AI assistance</li>
+            <li>✅ Centralized request tracking with statuses</li>
+            <li>✅ AI extracts orders from project blueprints</li>
+            <li>✅ Real-time status updates for everyone</li>
+            <li>✅ Single source of truth across all branches</li>
+            <li>✅ Automatic reorder alerts at thresholds</li>
+            <li>✅ Supplier pricing built into system</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h2>Modern Technology Stack</h2>
+      <p>Built with enterprise-grade technologies:</p>
+      <ul>
+        <li><strong>Frontend:</strong> Next.js 15, React 19, TypeScript</li>
+        <li><strong>Backend:</strong> Node.js with RESTful API architecture</li>
+        <li><strong>Database:</strong> PostgreSQL with Prisma ORM</li>
+        <li><strong>AI:</strong> OpenAI integration with function calling</li>
+        <li><strong>Authentication:</strong> NextAuth.js secure sessions</li>
+        <li><strong>Deployment:</strong> Vercel-optimized for instant global access</li>
+        <li><strong>Mobile:</strong> Responsive design works on all devices</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>Included Free</h2>
+      <ul>
+        <li>Unlimited API Access - Integrate with your existing systems</li>
+        <li>QR Code Generation - Create codes for all inventory items</li>
+        <li>Custom Branding - Your logo and company colors</li>
+        <li>Regular Updates - New features added continuously</li>
+        <li>Mobile Access - Works perfectly on phones and tablets</li>
+        <li>Data Export - Your data, exportable anytime</li>
+      </ul>
+    </div>
+
+    <div class="cta-section">
+      <h2>Get Started Today</h2>
+      <p>30-Day Free Trial • No credit card required • Full feature access • Cancel anytime</p>
+      <ol style="text-align:left;max-width:500px;margin:0 auto 32px;color:#B0B0B0">
+        <li>Create your company account</li>
+        <li>Add your inventory items</li>
+        <li>Invite your team members</li>
+        <li>Start ordering smarter</li>
+      </ol>
+      <a class="cta-button" href="/contact.html" aria-label="Contact us to get started with Manifest">
+        Schedule Demo
+      </a>
+    </div>
+
+    <div class="info-section" style="text-align:center;margin-top:60px">
+      <h2>Ready to Transform Your Inventory Operations?</h2>
+      <p>Join forward-thinking organizations using AI-powered inventory management to eliminate coordination friction and boost operational efficiency.</p>
+      <p style="margin-top:24px">For questions, support, or to schedule a demo, contact us at <a href="mailto:info@lysaratech.com" style="color:#FFD369">info@lysaratech.com</a></p>
+    </div>
+  </main>
+
+  <footer aria-label="Footer">
+    <div class="footer-wrap">
+      <div>&copy; <span id="year"></span> Lysara LLC</div>
+      <div class="footer-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/onevine-child-safety.html">Child Safety</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
